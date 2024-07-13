@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ProjectCard from "../cards/ProjectCard";
 import SkillsCard from "../cards/SkillsCard";
 import axios from "axios";
-import Shimmer from "../custom/Shimmer";
+
 import "./style.css";
 import { BiDownload, BiLogoLinkedin } from "react-icons/bi";
 import { BsBootstrap, BsGithub } from "react-icons/bs";
@@ -18,15 +17,6 @@ import { FaFacebook, FaReact } from "react-icons/fa6";
 import { DiJavascript, DiNodejs } from "react-icons/di";
 
 function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate an API call
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000); // Adjust the timeout duration as needed
-  }, []);
-
   // Download CV from Cloudinary to Local Storage
   const cloudinaryUrl =
     "https://res.cloudinary.com/dwbt979k3/image/upload/v1720330832/portfolio/q90nhdtmzfesa1wln9nu.jpg";
@@ -50,10 +40,6 @@ function Home() {
       console.error("Error downloading the file", error);
     }
   };
-
-  if (isLoading) {
-    return <Shimmer />;
-  }
 
   return (
     <>
