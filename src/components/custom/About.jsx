@@ -2,7 +2,7 @@ function About() {
   return (
     <>
       <div
-        className="about-containe flex justify-cente text-gray-200 h-screen"
+        className="about-containe flex justify-cente text-gray-200 h-full md:h-screen"
         style={{ backgroundColor: "#0a1e2b" }}
       >
         <div className="detail mt-10 w-11/12">

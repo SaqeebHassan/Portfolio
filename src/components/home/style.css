@@ -5,6 +5,11 @@
 .about-container {
   height: 70vh;
 }
+@media (max-width: 768px) {
+  .about-container {
+    height: 90vh;
+  }
+}
 
 .cv-btn {
   position: relative;

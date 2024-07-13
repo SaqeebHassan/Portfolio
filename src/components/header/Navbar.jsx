@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./style.css";
+import Hamburger from "hamburger-react";
 
 function Navbar() {
   const [isVisible, setisVisible] = useState(false);
@@ -14,12 +15,7 @@ function Navbar() {
         <div className="mobile-logo">
           <strong className="text-xl">Saqeeb Hassan</strong>
         </div>
-        <div
-          className="toggler cursor-pointer"
-          onClick={() => setisVisible(!isVisible)}
-        >
-          <img className="invert" src="./icons/toggler.svg" alt="" />
-        </div>
+        <Hamburger onToggle={() => setisVisible(!isVisible)} size={20} />
       </div>
       {/* End of Mobile Navbar */}
       {/* Desktop Navbar */}
@@ -31,7 +27,7 @@ function Navbar() {
       >
         <div className="nav-left">
           <div className="logo">
-            <img src="./images/stencillogo.png" alt="" width={40} />
+            <span className="text-2xl text-white font-bold">Saqeeb Hassan</span>
           </div>
         </div>
         <div className="nav-right block md:flex gap-4">

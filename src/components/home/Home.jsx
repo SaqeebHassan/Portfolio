@@ -1,11 +1,11 @@
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ProjectCard from "../cards/ProjectCard";
 import SkillsCard from "../cards/SkillsCard";
 import axios from "axios";
+import Shimmer from "../custom/Shimmer";
 import "./style.css";
-
 import { BiDownload, BiLogoLinkedin } from "react-icons/bi";
-import "./style.css";
 import { BsBootstrap, BsGithub } from "react-icons/bs";
 import {
   SiExpress,
@@ -16,7 +16,17 @@ import {
 } from "react-icons/si";
 import { FaFacebook, FaReact } from "react-icons/fa6";
 import { DiJavascript, DiNodejs } from "react-icons/di";
+
 function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate an API call
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Adjust the timeout duration as needed
+  }, []);
+
   // Download CV from Cloudinary to Local Storage
   const cloudinaryUrl =
     "https://res.cloudinary.com/dwbt979k3/image/upload/v1720330832/portfolio/q90nhdtmzfesa1wln9nu.jpg";
@@ -40,6 +50,11 @@ function Home() {
       console.error("Error downloading the file", error);
     }
   };
+
+  if (isLoading) {
+    return <Shimmer />;
+  }
+
   return (
     <>
       <div
@@ -114,27 +129,30 @@ function Home() {
         </div>
       </div>
       <div
-        className="skills-container flex flex-col md:flex-row items justify-center text-gray-200 -my-1"
+        className="skills-container flex flex-col items-center text-gray-200 -my-1"
         style={{ backgroundColor: "#0a1e2b" }}
       >
-        <div className="about w-2/5 mt-10 md:ms-0 ms-14">
-          <strong className="text-2xl">About me</strong>
-          <p>
-            My name is Saqeeb Hassan. I am full stack web Developer. I am
-            proficient in Front end as well as in Backend.
-          </p>
-          <NavLink to="/About" className={`text-blue-400`}>
-            Read more
-          </NavLink>
+        <div className="about w-4/5">
+          <div className="about-detail w-full md:w-5/12">
+            <strong className="text-2xl">About me</strong>
+            <p>
+              My name is Saqeeb Hassan. I am full stack web Developer. I am
+              proficient in Front end as well as in Backend.
+            </p>
+            <NavLink to="/About" className={`text-blue-400`}>
+              Read more
+            </NavLink>
+          </div>
         </div>
-        <div className="skills w-full md:w-2/5 flex flex-col md:items-end items-center mt-6 md:mt-36">
-          <div className="flex">
+        <strong className="text-3xl font-bold">My Skills</strong>
+        <div className="skills w-4/5 flex flex-col items-end">
+          <div className="skill-items flex justify-center flex-wrap">
             <SkillsCard src={<SiMongodb size={80} color="#0fa54d" />} />
             <SkillsCard src={<SiExpress size={80} color="#000" />} />
             <SkillsCard src={<FaReact size={80} color="#00d1f7" />} />
             <SkillsCard src={<DiNodejs size={80} color="#88c249" />} />
           </div>
-          <div className="flex">
+          <div className="skill-items flex justify-center flex-wrap">
             <SkillsCard src={<DiJavascript size={80} color="#efd81d" />} />
             <SkillsCard src={<SiRedux size={80} color="#7348b5" />} />
             <SkillsCard src={<SiTailwindcss size={80} color="#15b8c5" />} />

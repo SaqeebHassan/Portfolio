@@ -55,7 +55,7 @@ function Projects() {
               <button className="bg-cyan-500 py-1 px-3 rounded-sm me-1">
                 D3 Js
               </button>
-              <button className="bg-cyan-500 py-1 px-3 rounded-sm">
+              <button className="bg-cyan-500 py-1 px-3 rounded-sm my-1">
                 HTML/CSS
               </button>
             </div>
